@@ -1,0 +1,70 @@
+{
+  "name": "threatoptic-vscode",
+  "displayName": "ThreatOptic",
+  "description": "Sync installed IDE extension inventory to ThreatOptic for security monitoring.",
+  "version": "0.1.1",
+  "publisher": "threatoptic",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThreatOptic/VSCode-Extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ThreatOptic/VSCode-Extension/issues"
+  },
+  "homepage": "https://threat-optic.com",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "threatoptic.setApiKey",
+        "title": "ThreatOptic: Set API Key"
+      },
+      {
+        "command": "threatoptic.clearApiKey",
+        "title": "ThreatOptic: Clear API Key"
+      },
+      {
+        "command": "threatoptic.syncExtensions",
+        "title": "ThreatOptic: Sync IDE Extensions"
+      }
+    ],
+    "configuration": {
+      "title": "ThreatOptic",
+      "properties": {
+        "threatoptic.apiUrl": {
+          "type": "string",
+          "default": "https://api.threat-optic.com",
+          "description": "ThreatOptic API base URL."
+        },
+        "threatoptic.deviceLabel": {
+          "type": "string",
+          "default": "",
+          "description": "Optional friendly name for this IDE installation."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "package": "npm run compile && vsce package --githubBranch main"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.2.1",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.7.2"
+  }
+}

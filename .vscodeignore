@@ -1,0 +1,14 @@
+node_modules
+.dockerignore
+Dockerfile
+build.sh
+.gitignore
+*.vsix
+*.log
+.vscode/**
+.vscode-test/**
+src/**
+esbuild.js
+tsconfig.json
+**/*.map
+**/*.ts
